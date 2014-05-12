@@ -1,0 +1,20 @@
+(function() {
+  "use strict";
+  define("timey", "jquery", function() {
+    var Timey;
+    Timey = function(startDate, endDate) {
+      this.init(startDate, endDate);
+    };
+    Timey.prototype = {
+      init: function(startDate, endDate) {
+        console.log(startDate, endDate);
+      },
+      draw: function(selector) {
+        var $container;
+        $container = $(selector);
+      }
+    };
+    return Timey;
+  });
+
+}).call(this);

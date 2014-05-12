@@ -1,0 +1,168 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+// bower:scss
+@import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
+// endbower
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+.timey {
+  * {
+    @include box-sizing(border-box);
+    transition:0.3s;
+  }
+  header {
+  	font-size:4em;
+    position: relative;
+    text-align: center;
+    line-height: 2.5;
+    .month-title {
+      font-size:1.5em;
+      font-weight: 100;
+    }
+    .glyphicon-chevron-left, .glyphicon-chevron-right {
+      cursor:pointer;
+      position: absolute;
+      left: 0;
+      transition: 0.5s;
+      top: 50%;
+      margin-top: -0.5em;
+      &:hover { 
+        color: #aaa;
+      }
+    }
+    .glyphicon-chevron-right {
+      position: absolute;
+      left: inherit;
+      right: 0;
+    }
+  }
+  .timey-main {
+    box-shadow: 0 0 12px #ccc;
+  }
+  .timey-tools {
+    @include clearfix;
+    font-size: 3em;
+    background: cornflowerblue;
+    padding: 0.5em 0.1em 0.6em;
+    box-shadow: 0 3px 3px #ccc;
+    color: white;
+    &:hover {
+      .signage {
+        opacity: 1;
+      }
+    }
+    .glyphicon { 
+      cursor:pointer;
+      margin: 0 0.6em;
+      line-height: 1.5;
+      &:hover {
+        color: #ddd;
+      }
+    }
+  }
+  .timey-tools-left {
+    float:left;
+  }
+  .timey-tools-right {
+    float:right;
+  }
+  .timey-cal {
+    @include clearfix;
+    padding: 1em;
+    padding-top:2em;
+  }
+  .timey-day {
+    float:left;
+    display:inline;
+    width: 1px / 7px * 100%;
+    font-size:2.5em;
+    color: #ccc;
+    min-height: 4em;
+    font-weight: 100;
+    position: relative;
+    // perspective: 800px;
+    .timey-card {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      padding: 0.3em;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      &:hover {
+        box-shadow: 0 0 6px #ccc;
+      }
+      figure {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        top:0;
+        left:0;
+        padding:0.3em;
+      }
+      .timey-day-back {
+        transform: rotateY( 180deg );
+      }
+      &.flipped {
+        transform: rotateY( 180deg );
+      }
+      .timey-appt {
+        font-size:0.5em;
+      }
+    }
+    
+  }
+  #tt-input {
+    padding: 0 0.4em;
+    color: #333;
+    font-weight: 100;
+    font-size:0.7em;
+    padding: 0.4em 0.6em;
+    position:relative;
+    top:-7px;
+  }
+}
+
+/* signage */
+.signage-wrapper {
+  position: relative;
+}
+.signage {
+  position: absolute;
+  top:100%;
+  left:50%;
+  width:120px;
+  margin-left: -60px;
+  text-align: center;
+  font-size: 0.5em;
+  line-height: 1;
+  color: white;
+  // background: cornflowerblue;
+  padding-bottom: 4px;
+  // box-shadow: 0 0 12px white;
+  // border-radius: 12px;
+  opacity: 0;
+  // padding: 5px 0 12px;
+  margin-top: -3px;
+  font-weight: 100;
+}
+.signage-wrapper:hover {
+  .signage {
+    opacity: 1;
+  }
+}

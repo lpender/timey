@@ -1,0 +1,17 @@
+<div class="timey-day">
+	<div class="timey-card" onclick="$(this).toggleClass('flipped');">
+		<figure class="timey-day-front">
+			<div class="timey-name">
+				{{ name }}
+			</div>
+		</figure>
+		<figure class="timey-day-back">
+			<div class="timey-name">
+				{{ name }}
+			</div>
+      <div class="timey-appt">
+        You have no appointments.
+      </div>
+		</figure>
+	</div>
+</div>
