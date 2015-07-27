@@ -248,6 +248,7 @@ th {
   font-family: 'Glyphicons Halflings';
   src: url("/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.eot");
   src: url("/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+
 .glyphicon {
   position: relative;
   top: 1px;
@@ -868,7 +869,7 @@ th {
 
 html {
   font-size: 62.5%;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -3957,6 +3958,7 @@ a.thumbnail.active {
 
   to {
     background-position: 0 0; } }
+
 .progress {
   overflow: hidden;
   height: 20px;
@@ -4882,7 +4884,7 @@ button.close {
     border-radius: 10px;
     cursor: pointer;
     background-color: #000 \9;
-    background-color: transparent; }
+    background-color: rgba(0, 0, 0, 0); }
   .carousel-indicators .active {
     margin: 0;
     width: 12px;
@@ -4968,6 +4970,7 @@ button.close {
 
 @-ms-viewport {
   width: device-width; }
+
 .visible-xs, .visible-sm, .visible-md, .visible-lg {
   display: none !important; }
 
@@ -5147,8 +5150,7 @@ body {
   padding-right: 15px; }
 
 .timey * {
-  box-sizing: border-box;
-  transition: 0.3s; }
+  box-sizing: border-box; }
 .timey header {
   font-size: 4em;
   position: relative;
@@ -5183,6 +5185,8 @@ body {
     display: table; }
   .timey .timey-tools:after {
     clear: both; }
+  .timey .timey-tools:hover .signage-wrapper {
+    top: 0; }
   .timey .timey-tools:hover .signage {
     opacity: 1; }
   .timey .timey-tools .glyphicon {
@@ -5190,7 +5194,7 @@ body {
     margin: 0 0.6em;
     line-height: 1.5; }
     .timey .timey-tools .glyphicon:hover {
-      color: #ddd; }
+      text-shadow: 0 0 12px #fff; }
 .timey .timey-tools-left {
   float: left; }
 .timey .timey-tools-right {
@@ -5212,17 +5216,24 @@ body {
   min-height: 4em;
   font-weight: 100;
   position: relative; }
+  .timey .timey-day.flipped .timey-card {
+    box-shadow: 0 0 6px #ccc;
+    color: black;
+    width: 300%;
+    height: 300%;
+    left: -95%;
+    z-index: 2; }
   .timey .timey-day .timey-card {
-    width: 100%;
-    height: 100%;
+    width: 98%;
+    height: 98%;
     position: absolute;
     padding: 0.3em;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    transition: -webkit-transform 1s;
-    transition: transform 1s; }
+    transition: 1s; }
     .timey .timey-day .timey-card:hover {
-      box-shadow: 0 0 6px #ccc; }
+      box-shadow: 0 0 6px #ccc;
+      color: black; }
     .timey .timey-day .timey-card figure {
       display: block;
       position: absolute;
@@ -5232,13 +5243,13 @@ body {
       backface-visibility: hidden;
       top: 0;
       left: 0;
-      padding: 0.3em; }
-    .timey .timey-day .timey-card .timey-day-back {
-      -webkit-transform: rotateY(180deg);
-      transform: rotateY(180deg); }
-    .timey .timey-day .timey-card.flipped {
-      -webkit-transform: rotateY(180deg);
-      transform: rotateY(180deg); }
+      padding: 0.3em;
+      background: white; }
+      .timey .timey-day .timey-card figure.timey-day-front {
+        cursor: pointer; }
+      .timey .timey-day .timey-card figure.timey-day-back {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg); }
     .timey .timey-day .timey-card .timey-appt {
       font-size: 0.5em; }
 .timey #tt-input {
@@ -5246,13 +5257,14 @@ body {
   color: #333;
   font-weight: 100;
   font-size: 0.7em;
-  padding: 0.4em 0.6em;
-  position: relative;
-  top: -7px; }
+  padding: 0.4em 0.6em; }
 
 /* signage */
 .signage-wrapper {
-  position: relative; }
+  position: relative;
+  top: 7px;
+  transition: 0.2s;
+  color: white; }
 
 .signage {
   position: absolute;
@@ -5271,5 +5283,3 @@ body {
 
 .signage-wrapper:hover .signage {
   opacity: 1; }
-
-/*# sourceMappingURL=main.css.map */

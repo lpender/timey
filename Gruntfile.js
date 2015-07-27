@@ -54,11 +54,17 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['<%= config.cssOut %>/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: [
+          'sass:server',
+          'autoprefixer'
+        ]
       },
       styles: {
         files: ['<%= config.cssOut %>/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+        tasks: [
+          // 'newer:copy:styles'
+          // 'autoprefixer'
+        ]
       },
       livereload: {
         options: {
@@ -190,7 +196,7 @@ module.exports = function (grunt) {
           ext: '.css'
         }],
         options: {
-          sourcemap : true
+          // sourcemap : true
         }
       }
     },
@@ -417,7 +423,6 @@ module.exports = function (grunt) {
       grunt.task.run([
         'clean:server',
         'concurrent:test',
-        'autoprefixer'
       ]);
     }
 

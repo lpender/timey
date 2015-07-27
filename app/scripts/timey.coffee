@@ -1,15 +1,12 @@
-### global log ###
-
 'use strict'
 
 define [
-  'timey', 'jquery', 'mustache'
-  ], (Timey, $, Mustache) ->
-
-  console.log(Mustache)
+  'jquery', 'mustache'
+  ], ($, Mustache) ->
 
   ###*
    * [Timey description]
+   * @param {selector, $element, element} container
    * @param {[type]} startDate
    * @param {[type]} endDate
   ###
@@ -18,28 +15,48 @@ define [
     return this
 
   Timey:: =
+    elements: {},
 
     init: (startDate, endDate) ->
+      @startDate = startDate
+      @endDate = endDate
+
+      @dates = []
+
       @week = ['Su', 'Mo','Tu','We','Th','Fr', 'Sa']
-      @month = [0,1,2,3]
-      console.log startDate, endDate
-      return
+      @numWeeks = [0, 1, 2, 3]
 
-    draw: (selector) -> 
-      @$container = $(selector)
+      return this
 
-      $calendar = $(@$container.find('.timey-cal'))
+    addDate : (date) ->
+      @dates.push date
+      return true
 
-      $.get '../mst/day.mst', (template) =>
-        log template
+    draw: (container) ->
+      @$container = $(container)
 
-        @month.forEach =>
-          @week.forEach (n) ->
-            $day = Mustache.render(template, {name: n});
-            $calendar.append $day
+      $.get '../mst/calendar.mst', (calendarHtml) =>
+        @$container.append Mustache.render(calendarHtml)
 
+        $calendar = @$container.find('.timey-cal') #@getElement 'calendar'
+        $.get '../mst/day.mst', (template) =>
+          @numWeeks.forEach =>
+            @week.forEach (n) ->
+              $day = Mustache.render(template, {name: n})
+              $calendar.append $day
 
+          @$container.trigger('timey:draw-complete')
+          @attach()
 
-      return 
+    getElement: (component) ->
+      @elements[component] || @elements[component] = @$container.find(@elConfigs[component])
+
+    elConfigs: 
+      calendar: '.timey-cal',
+      day : '.timey-day'
+
+    attach: () ->
+      @getElement('day').on 'click', ()->
+        $(this).toggleClass('flipped')
 
   Timey

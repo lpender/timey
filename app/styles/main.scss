@@ -1,7 +1,7 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
 // bower:scss
-@import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
 /* Space out content a bit */
@@ -22,7 +22,7 @@ body {
 .timey {
   * {
     @include box-sizing(border-box);
-    transition:0.3s;
+    // transition:0.3s;
   }
   header {
   	font-size:4em;
@@ -61,6 +61,9 @@ body {
     box-shadow: 0 3px 3px #ccc;
     color: white;
     &:hover {
+      .signage-wrapper {
+        top: 0;
+      }
       .signage {
         opacity: 1;
       }
@@ -70,7 +73,7 @@ body {
       margin: 0 0.6em;
       line-height: 1.5;
       &:hover {
-        color: #ddd;
+        text-shadow: 0 0 12px #fff;
       }
     }
   }
@@ -95,15 +98,26 @@ body {
     font-weight: 100;
     position: relative;
     // perspective: 800px;
+    &.flipped .timey-card {
+      // transform: rotateY( 180deg );
+      box-shadow: 0 0 6px #ccc;
+      color: black;
+      width:300%;
+      height: 300%;
+      left:-95%;
+      z-index:2;
+    }
     .timey-card {
-      width: 100%;
-      height: 100%;
+      width: 98%;
+      height: 98%;
       position: absolute;
       padding: 0.3em;
       transform-style: preserve-3d;
-      transition: transform 1s;
+      // transition: 0.2s;
+      transition: 1s;
       &:hover {
         box-shadow: 0 0 6px #ccc;
+        color: black;
       }
       figure {
         display: block;
@@ -114,12 +128,13 @@ body {
         top:0;
         left:0;
         padding:0.3em;
-      }
-      .timey-day-back {
-        transform: rotateY( 180deg );
-      }
-      &.flipped {
-        transform: rotateY( 180deg );
+        background:white;
+        &.timey-day-front {
+          cursor:pointer;
+        }
+        &.timey-day-back {
+          transform: rotateY( 180deg );
+        }
       }
       .timey-appt {
         font-size:0.5em;
@@ -133,14 +148,15 @@ body {
     font-weight: 100;
     font-size:0.7em;
     padding: 0.4em 0.6em;
-    position:relative;
-    top:-7px;
   }
 }
 
 /* signage */
 .signage-wrapper {
   position: relative;
+  top: 7px;
+  transition: 0.2s;
+  color: white;
 }
 .signage {
   position: absolute;
@@ -154,6 +170,7 @@ body {
   color: white;
   // background: cornflowerblue;
   padding-bottom: 4px;
+  // color: black;
   // box-shadow: 0 0 12px white;
   // border-radius: 12px;
   opacity: 0;

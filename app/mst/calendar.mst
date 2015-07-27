@@ -1,0 +1,24 @@
+<header>
+  <div class="glyphicon glyphicon-chevron-left"></div>
+  <div class="month-title">May</div>
+  <div class="glyphicon glyphicon-chevron-right"></div>
+</header>
+<div class="timey-main">
+  <div class="timey-tools">
+    <div class="timey-tools-left">
+      <label class="tt-input-label hide" for="tt-input">
+        Time: 
+      </label>
+      <div class="tt-input-add glyphicon glyphicon-plus" href="javascript:void(0)" data-signage="add"></div>
+      <input id="tt-input" type="text" placeholder="i.e. thursdays at 1pm"/>
+    </div>
+    <div class="timey-tools-right">
+      <div class="glyphicon glyphicon-download" data-signage="sync"></div>
+      <div class="glyphicon glyphicon-th-large" data-signage="icons"></div>
+      <div class="glyphicon glyphicon-th-list" data-signage="list"></div>
+    </div>
+  </div>
+  <div class="timey-cal">
+
+  </div>
+</div>
